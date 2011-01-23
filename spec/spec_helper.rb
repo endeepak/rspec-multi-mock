@@ -1,5 +1,7 @@
+require 'rubygems'
 require 'spec'
 require 'rspec-multi-mock'
+require 'not_a_mock'
 
 Spec::Runner.configure do |config|
   config.mock_with MultiMock::Adapter.for(:rspec, :mocha, :rr, ::NotAMock::RspecMockFrameworkAdapter)

@@ -1,9 +1,4 @@
 module MultiMock
-  FRAMEWORK_MAP = { :rspec => MultiMock::Adapters::RSpec,
-                    :mocha =>  MultiMock::Adapters::Mocha,
-                    :not_a_mock =>  MultiMock::Adapters::NotAMock,
-                    :rr =>  MultiMock::Adapters::RR }.freeze
-
   def self.frameworks=(frameworks)
     @frameworks = frameworks.collect { |f|  framework(f) }
   end
@@ -11,9 +6,26 @@ module MultiMock
   def self.framework(framework)
     case framework
     when Symbol, String
-      FRAMEWORK_MAP[framework.to_sym].new
+      adapter(framework.to_s).new
     when Module
       MultiMock::Adapters::Unknown.new(framework)
+    end
+  end
+
+  def self.adapter(framework)
+    case framework
+    when /rspec/
+      require 'adapters/rspec'
+      MultiMock::Adapters::RSpec
+    when /mocha/
+      require 'adapters/mocha'
+      MultiMock::Adapters::Mocha
+    when /not_a_mock/
+      require 'adapters/not_a_mock'
+      MultiMock::Adapters::NotAMock
+    when /rr/
+      require 'adapters/rr'
+      MultiMock::Adapters::RR
     end
   end
 
