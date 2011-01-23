@@ -9,4 +9,5 @@ module MultiMock
   end
 end
 
-Spec::Example::ExampleMethods.send(:include, RR::Extensions::InstanceMethods)
+#This will add mock(Entity), stub(Entity) etc rr methods to spec runner
+MultiMock::Adapter.send(:include, RR::Extensions::InstanceMethods)
