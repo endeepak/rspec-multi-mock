@@ -1,0 +1,1 @@
+Note: rr ad not_a_mock can not be used together as have_received matcher is defined in both frameworks.

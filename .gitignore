@@ -1,0 +1,6 @@
+*.gem
+*.gemspec
+*.log
+*.db
+pkg
+rdoc
