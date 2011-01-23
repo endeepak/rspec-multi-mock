@@ -1,1 +1,43 @@
-Note: rr ad not_a_mock can not be used together as have_received matcher is defined in both frameworks.
+== Description
+
+Allows multiple mock frameworks to be in action in RSpec. Currently works only for rspec 1.3.1.
+
+== Install
+
+	gem install rspec-multi-mock
+
+== Usage
+
+Add dependency in gem file
+
+	gem 'rspec-multi-mock', :group => :test
+
+Configure multi-mock for spec runner (Usually done in spec_helper)
+
+	Spec::Runner.configure do |config|
+    config.mock_with MultiMock::Adapter.for(:rspec, :mocha, :rr, :not_a_mock, ::NewMockFramework::RSpecAdapter)
+  end
+
+As shown above you can use a symbol for frameworks listed above. The usage of adapter module directly may not work completely if the adapter module contains any extensions methods to be used in specs. For instance RR rspec adapter includes both the adapter methods and the extension methods.
+
+== Why should I use this?
+
+It is always good to use a single mocking framework. There can be a time you come across a new framework with cleaner syntax and new features. But RSpec does not support multiple mocking frameworks. We may hesitate to start using the new framework because
+
+* There is some effort required to convert all the specs to use new framework for mocking.
+* The new framework may not provide all the features available in the current framework.
+
+Using this gem you can
+
+* Start moving specs incrementally to new framework
+* Start using new framework for new specs. This will reduce the number of specs need to be converted at the end.
+* Use both frameworks till the new framework provides all the required features.
+
+If you are already using multiple mock frameworks with just one mock framework configured in spec runner, the mocks may not be working completely as you expected.
+
+* The expectations set using the un-configured framework will not be verified.
+* The methods mocked or stubbed using the un-configured framework will not be cleaned up after the spec run is completed. This becomes a serious issue if it is a class method.
+
+== Limitations
+
+* RR ad Not-A-Mock can not be used together since both frameworks have different implementation of 'have_received' matcher. This is true for any two frameworks with similar interface and different implementations.
