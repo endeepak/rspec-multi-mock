@@ -1,4 +1,5 @@
-require 'mocha'
+require 'mocha/object'
+require 'mocha/api'
 
 module MultiMock
   module Adapters
