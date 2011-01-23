@@ -1,0 +1,5 @@
+require 'multi_mock'
+require 'adapter'
+require 'adapters/mocha'
+require 'adapters/rspec'
+require 'extensions/symbol'
