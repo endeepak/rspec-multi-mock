@@ -1,8 +1,15 @@
+require 'adapters/unknown'
+
 module MultiMock
   def self.frameworks=(frameworks)
     @frameworks = frameworks.collect { |f|  framework(f) }
   end
 
+  def self.frameworks
+    @frameworks ||= []
+  end
+
+  private
   def self.framework(framework)
     case framework
     when Symbol, String
@@ -27,9 +34,5 @@ module MultiMock
       require 'adapters/rr'
       MultiMock::Adapters::RR
     end
-  end
-
-  def self.frameworks
-    @frameworks ||= []
   end
 end

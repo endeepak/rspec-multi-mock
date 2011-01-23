@@ -1,3 +1,5 @@
+require 'multi_mock'
+
 module MultiMock
   module Adapter
     def self.for(*frameworks)
