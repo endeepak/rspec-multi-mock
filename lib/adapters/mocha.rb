@@ -1,9 +1,10 @@
+require 'rubygems'
 require 'mocha/object'
 require 'mocha/api'
 
 module MultiMock
   module Adapters
-    module Mocha
+    class Mocha
       include ::Mocha::API
 
       alias :setup_mocks_for_rspec :mocha_setup
