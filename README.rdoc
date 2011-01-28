@@ -2,19 +2,19 @@
 
 Allows multiple mock frameworks to be in action in RSpec. Currently works only for rspec 1.3.1.
 
-== Install
+== Installation
 
-	gem install rspec-multi-mock
+  gem install rspec-multi-mock
 
 == Usage
 
 Add dependency in gem file
 
-	gem 'rspec-multi-mock', :group => :test
+  gem 'rspec-multi-mock', :group => :test
 
 Configure multi-mock for spec runner (Usually done in spec_helper)
 
-	Spec::Runner.configure do |config|
+  Spec::Runner.configure do |config|
     config.mock_with MultiMock::Adapter.for(:rspec, :mocha, :rr, :not_a_mock, ::NewMockFramework::RSpecAdapter)
   end
 
