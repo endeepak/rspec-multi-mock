@@ -25,18 +25,18 @@ As shown above you can use a symbol for frameworks listed above. The usage of ad
 It is always good to use a single mocking framework. There can be a time you come across a new framework with cleaner syntax and new features. But RSpec does not support multiple mocking frameworks. We may hesitate to start using the new framework because
 
 * There is some effort required to convert all the specs to use new framework for mocking.
-* The new framework may not provide all the features available in the current framework.
+* The new mocking framework may not provide all the features available in the current mocking framework.
 
 Using this gem you can
 
 * Start moving specs incrementally to new framework
 * Start using new framework for new specs. This will reduce the number of specs need to be converted at the end.
-* Use both frameworks till the new framework provides all the required features.
+* Use both mocking frameworks till the new one provides all the required features.
 
 If you are already using multiple mock frameworks with just one mock framework configured in spec runner, the mocks may not be working completely as you expected.
 
-* The expectations set using the un-configured framework will not be verified.
-* The methods mocked or stubbed using the un-configured framework will not be cleaned up after the spec run is completed. This becomes a serious issue if it is a class method.
+* The expectations set using the un-configured mocking framework will not be verified.
+* The methods mocked or stubbed using the un-configured mocking framework will not be cleaned up after the spec run is completed. This becomes a serious issue if it is a class method.
 
 == Limitations
 

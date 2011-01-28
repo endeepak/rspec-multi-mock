@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/spec_helper'
 
-describe "MultiMock" do
+describe MultiMock::Adapter do
   context "with mocha" do
     it "should return the stubbed value" do
       Object.expects(:hello).returns("Hello Mocha")
@@ -24,7 +24,7 @@ describe "MultiMock" do
     end
   end
 
-  context "with not_a_mock" do
+  context "with ::NotAMock::RspecMockFrameworkAdapter" do
     it "should return the stubbed value" do
       Object.stub_method(:hello => "Hello Not A Mock")
 
