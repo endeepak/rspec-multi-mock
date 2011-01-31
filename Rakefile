@@ -1,19 +1,19 @@
 require "rubygems"
 require "rake/gempackagetask"
 require "rake/rdoctask"
-require "spec"
-require "spec/rake/spectask"
+require "rspec"
+require "rspec/core/rake_task"
 
-Spec::Rake::SpecTask.new do |t|
-  t.spec_opts = %w(--format specdoc --colour)
-  t.libs = ["spec"]
+RSpec::Core::RakeTask.new do |t|
+  t.rspec_opts = %w(--format documentation --color)
+  t.pattern = 'spec/**/*_spec.rb'
 end
 
 task :default => ["spec"]
 
 spec = Gem::Specification.new do |s|
   s.name              = "rspec-multi-mock"
-  s.version           = "0.1.0"
+  s.version           = "0.2.0"
   s.summary           = "Multiple mock frameworks support for RSpec"
   s.description       = "Allows multiple mock frameworks to be in action in RSpec"
   s.author            = "Deepak N"
@@ -24,7 +24,7 @@ spec = Gem::Specification.new do |s|
   s.rdoc_options      = %w(--main README.rdoc)
   s.files             = %w(README.rdoc) + Dir.glob("{spec,lib/**/*}")
   s.require_paths     = ["lib"]
-  s.add_runtime_dependency("rspec", "=1.3.1")
+  s.add_runtime_dependency("rspec", "=2.3.0")
   s.add_development_dependency("mocha", "=0.9.8")
   s.add_development_dependency("not_a_mock", "=1.0.1")
   s.add_development_dependency("rr", "=1.0.2")

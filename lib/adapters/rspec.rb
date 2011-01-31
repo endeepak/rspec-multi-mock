@@ -1,9 +1,9 @@
-require 'spec/adapters/mock_frameworks/rspec'
+require 'rspec/core/mocking/with_rspec'
 
 module MultiMock
   module Adapters
     class RSpec
-      include ::Spec::Adapters::MockFramework
+      include ::RSpec::Core::MockFrameworkAdapter
     end
   end
 end

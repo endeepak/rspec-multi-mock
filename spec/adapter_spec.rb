@@ -82,7 +82,7 @@ describe MultiMock::Adapter do
     it "should verify the proxied expectation" do
       Object.should_receive(:hello).never
 
-      lambda { Object.hello }.should raise_error(Spec::Mocks::MockExpectationError)
+      lambda { Object.hello }.should raise_error(RSpec::Mocks::MockExpectationError)
     end
 
     it "is setting up data for next spec" do
