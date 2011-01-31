@@ -2,7 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     diff-lcs (1.1.2)
-    mocha (0.9.8)
+    mocha (0.9.10)
       rake
     not_a_mock (1.0.1)
     rake (0.8.7)
@@ -20,7 +20,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mocha (= 0.9.8)
-  not_a_mock (= 1.0.1)
-  rr (= 1.0.2)
-  rspec (= 2.3.0)
+  mocha (~> 0.9.8)
+  not_a_mock (~> 1.0.1)
+  rr (~> 1.0.2)
+  rspec (~> 2.3.0)

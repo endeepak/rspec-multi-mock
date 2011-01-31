@@ -1,6 +1,8 @@
 == Description
 
-Allows multiple mock frameworks to be in action in RSpec. Currently works only for rspec 1.3.1.
+Allows multiple mock frameworks to be in action in RSpec. This version is for rspec ~>2.3.0.
+
+For rspec 1.3.1 refer to v0.1.0[https://github.com/endeepak/rspec-multi-mock/tree/v0.1.0]
 
 == Installation
 
@@ -8,30 +10,39 @@ Allows multiple mock frameworks to be in action in RSpec. Currently works only f
 
 == Usage
 
-Add dependency in gem file
+If you are using bundler add the dependency in Gemfile
 
   gem 'rspec-multi-mock', :group => :test
 
-Configure multi-mock for spec runner (Usually done in spec_helper)
+Configure multi-mock for RSpec runner (Usually done in spec_helper.rb)
 
-  Spec::Runner.configure do |config|
+  RSpec.configure do |config|
     config.mock_with MultiMock::Adapter.for(:rspec, :mocha, :rr, :not_a_mock, ::NewMockFramework::RSpecAdapter)
   end
 
 As shown above you can use a symbol for frameworks listed above. The usage of adapter module directly may not work completely if the adapter module contains any extensions methods to be used in specs. For instance RR rspec adapter includes both the adapter methods and the extension methods.
 
-== Why should I use this?
+== When & How is this useful?
 
-It is always good to use a single mocking framework. There can be a time you come across a new framework with cleaner syntax and new features. But RSpec does not support multiple mocking frameworks. We may hesitate to start using the new framework because
+There are cases where you might have to use two different mocking in the same project(for a while). It could be because
 
-* There is some effort required to convert all the specs to use new framework for mocking.
-* The new mocking framework may not provide all the features available in the current mocking framework.
+* You are merging two big projects and they use different mocking frameworks for unit testing.
+* You want to try a new mocking framework with cleaner syntax and some new features.
+
+Since RSpec does not support multiple mocking frameworks, we might hesitate to pick up these tasks because
+
+* There could be less time and it needs some effort to convert all the specs to use new mocking framework.
+* The new mocking framework may not yet provide all the features available in the current mocking framework.
 
 Using this gem you can
 
 * Start moving specs incrementally to new framework
 * Start using new framework for new specs. This will reduce the number of specs need to be converted at the end.
 * Use both mocking frameworks till the new one provides all the required features.
+
+Please note that using multiple mocking frameworks can create a lot of confusion in the team. So make sure that the end goal is to use single mocking framework(Your favorite one!). Use this gem only during the transition phase.
+
+== Note
 
 If you are already using multiple mock frameworks with just one mock framework configured in spec runner, the mocks may not be working completely as you expected.
 
