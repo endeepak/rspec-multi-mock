@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    rspec-multi-mock (0.2.1)
+      rspec (>= 2.3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -23,4 +29,4 @@ DEPENDENCIES
   not_a_mock (~> 1.0.1)
   rake
   rr (~> 1.0.2)
-  rspec (>= 2.3.0)
+  rspec-multi-mock!
