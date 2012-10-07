@@ -9,9 +9,13 @@ describe MultiMock::Adapter do
     end
 
     it "should verify the proxied expectation" do
+      stub(Mocha::Mockery.instance).verify #This is to make sure mocha does not verify expecteations at the end of this spec
       Object.expects(:hello).never
-
-      lambda { Object.hello }.should raise_error(Mocha::ExpectationError)
+       begin
+         Object.hello
+         fail "Expected to raise Mocha::ExpectationError"
+       rescue Mocha::ExpectationError
+       end
     end
 
     it "is setting up data for next spec" do
