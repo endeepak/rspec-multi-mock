@@ -1,4 +1,4 @@
-## rspec-multi-mock [![Build Status](http://travis-ci.org/endeepak/rspec-multi-mock.png)](http://travis-ci.org/endeepak/rspec-multi-mock)
+## rspec-multi-mock [![Build Status](https://travis-ci.org/endeepak/rspec-multi-mock.png)](https://travis-ci.org/endeepak/rspec-multi-mock)
 
 Allows multiple mock frameworks to be in action in RSpec. This version is for rspec >=2.3.0.
 
