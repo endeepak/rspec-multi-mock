@@ -1,8 +1,6 @@
 require 'rubygems'
 require 'rr'
 
-RSpec.configuration.backtrace_clean_patterns.push(RR::Errors::BACKTRACE_IDENTIFIER)
-
 module MultiMock
   module Adapters
     class RR
