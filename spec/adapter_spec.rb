@@ -5,7 +5,7 @@ describe MultiMock::Adapter do
     it "should return the stubbed value" do
       Object.expects(:hello).returns("Hello Mocha")
 
-      Object.hello.should == "Hello Mocha"
+      expect(Object.hello).to eq "Hello Mocha"
     end
 
     it "should verify the proxied expectation" do
@@ -24,32 +24,7 @@ describe MultiMock::Adapter do
     end
 
     it "should clear the stubs created in previous specs" do
-      lambda { Object.stubbed_method }.should raise_error(NoMethodError)
-    end
-  end
-
-  context "with ::NotAMock::RspecMockFrameworkAdapter" do
-    it "should return the stubbed value" do
-      Object.stub_method(:hello => "Hello Not A Mock")
-
-      Object.hello.should == "Hello Not A Mock"
-    end
-
-    it "should verify the proxied expectation" do
-      Object.stub_method(:hello) {}
-
-      Object.hello
-
-      Object.should have_received(:hello)
-    end
-
-    it "is setting up data for next spec" do
-      Object.stub_method(:stubbed_method) {}
-      Object.stubbed_method
-    end
-
-    it "should clear the stubs created in previous specs" do
-      lambda { Object.stubbed_method }.should raise_error(NoMethodError)
+      expect { Object.stubbed_method }.to raise_error(NoMethodError)
     end
   end
 
@@ -57,13 +32,13 @@ describe MultiMock::Adapter do
     it "should return the stubbed value" do
       stub(Object).hello { "Hello RR" }
 
-      Object.hello.should == "Hello RR"
+      expect(Object.hello).to eq "Hello RR"
     end
 
     it "should verify the proxied expectation" do
       dont_allow(Object).hello
 
-      lambda { Object.hello }.should raise_error(RR::Errors::TimesCalledError)
+      expect { Object.hello }.to raise_error(RR::Errors::TimesCalledError)
     end
 
     it "is setting up data for next spec" do
@@ -72,30 +47,30 @@ describe MultiMock::Adapter do
     end
 
     it "should clear the stubs created in previous specs" do
-      lambda { Object.stubbed_method }.should raise_error(NoMethodError)
+      expect { Object.stubbed_method }.to raise_error(NoMethodError)
     end
   end
 
   context "with rspec mock" do
     it "should return the stubbed value" do
-      Object.should_receive(:hello).and_return("Hello RSpec mock")
+      allow(Object).to receive(:hello).and_return("Hello RSpec mock")
 
-      Object.hello.should == "Hello RSpec mock"
+      expect(Object.hello).to eq "Hello RSpec mock"
     end
 
     it "should verify the proxied expectation" do
-      Object.should_receive(:hello).never
+      expect(Object).to receive(:hello)
 
-      lambda { Object.hello }.should raise_error(RSpec::Mocks::MockExpectationError)
+      expect { Object.hello }.not_to raise_error
     end
 
     it "is setting up data for next spec" do
-      Object.should_receive(:stubbed_method).and_return("Hello Mocha")
+      allow(Object).to receive(:stubbed_method).and_return("Hello RSpec mock")
       Object.stubbed_method
      end
 
     it "should clear the stubs created in previous specs" do
-      lambda { Object.stubbed_method }.should raise_error(NoMethodError)
+      expect { Object.stubbed_method }.to raise_error(NoMethodError)
     end
   end
 end

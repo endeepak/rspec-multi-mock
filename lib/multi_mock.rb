@@ -27,9 +27,6 @@ module MultiMock
     when /mocha/
       require 'adapters/mocha'
       MultiMock::Adapters::Mocha
-    when /not_a_mock/
-      require 'adapters/not_a_mock'
-      MultiMock::Adapters::NotAMock
     when /rr/
       require 'adapters/rr'
       MultiMock::Adapters::RR

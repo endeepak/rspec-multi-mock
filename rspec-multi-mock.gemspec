@@ -19,6 +19,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("rspec", ">= 3.7.0")
   s.add_development_dependency("rake")
   s.add_development_dependency("mocha", "~> 0.9.8")
-  s.add_development_dependency("not_a_mock", "~> 1.0.1")
   s.add_development_dependency("rr", "~> 1.1.2")
 end

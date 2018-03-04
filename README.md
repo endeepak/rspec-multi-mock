@@ -3,6 +3,7 @@
 Allows multiple mock frameworks to be in action in RSpec. This version is for rspec >=2.3.0.
 
 For rspec 1.3.1 refer to [v0.1.0](https://github.com/endeepak/rspec-multi-mock/tree/v0.1.0)
+For rspec 2.x and `not_a_mock` support refer to [v0.2.1](https://github.com/endeepak/rspec-multi-mock/tree/v0.2.1)
 
 ## Installation
 
@@ -17,7 +18,7 @@ If you are using bundler add the dependency in Gemfile
 Configure multi-mock for RSpec runner (Usually done in spec_helper.rb)
 
         RSpec.configure do |config|
-          config.mock_with MultiMock::Adapter.for(:rspec, :mocha, :rr, :not_a_mock, ::NewMockFramework::RSpecAdapter)
+          config.mock_with MultiMock::Adapter.for(:rspec, :mocha, :rr, ::NewMockFramework::RSpecAdapter)
         end
 
 As shown above you can use a symbol for frameworks listed above. The usage of adapter module directly may not work completely if the adapter module contains any extensions methods to be used in specs. For instance RR rspec adapter includes both the adapter methods and the extension methods.
