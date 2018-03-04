@@ -2,8 +2,8 @@
 
 Allows multiple mock frameworks to be in action in RSpec. This version is for rspec >=2.3.0.
 
-For rspec 1.3.1 refer to [v0.1.0](https://github.com/endeepak/rspec-multi-mock/tree/v0.1.0)
-For rspec 2.x and `not_a_mock` support refer to [v0.2.1](https://github.com/endeepak/rspec-multi-mock/tree/v0.2.1)
+* For rspec 1.3.1 refer to [v0.1.0](https://github.com/endeepak/rspec-multi-mock/tree/v0.1.0)
+* For rspec 2.x and `not_a_mock` support refer to [v0.2.1](https://github.com/endeepak/rspec-multi-mock/tree/v0.2.1)
 
 ## Installation
 
@@ -48,8 +48,4 @@ Please note that using multiple mocking frameworks can create a lot of confusion
 If you are already using multiple mock frameworks with just one mock framework configured in spec runner, the mocks may not be working completely as you expected.
 
 * The expectations set using the un-configured mocking framework will not be verified.
-* The methods mocked or stubbed using the un-configured mocking framework will not be cleaned up after the spec run is completed. This becomes a serious issue if it is a class method.
-
-## Limitations
-
-* RR ad Not-A-Mock can not be used together since both frameworks have different implementation of 'have_received' matcher. This is true for any two frameworks with similar interface and different implementations.
+* The methods mocked or stubbed using the un-configured mocking framework will not be cleaned up after the spec run is completed. This becomes a serious issue if it is a class method
