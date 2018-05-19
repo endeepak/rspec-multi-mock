@@ -1,6 +1,17 @@
 require 'rubygems'
-require 'mocha/object'
-require 'mocha/api'
+
+begin
+  require 'mocha/api'
+
+  begin
+    require 'mocha/object'
+  rescue LoadError
+    # Mocha >= 0.13.0 no longer contains this file nor needs it to be loaded.
+  end
+rescue LoadError
+  require 'mocha/standalone'
+  require 'mocha/object'
+end
 
 module MultiMock
   module Adapters
