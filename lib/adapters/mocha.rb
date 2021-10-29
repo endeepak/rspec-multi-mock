@@ -16,7 +16,7 @@ end
 module MultiMock
   module Adapters
     class Mocha
-      include ::Mocha::API
+      include ::Mocha::Hooks
 
       alias :setup_mocks_for_rspec :mocha_setup
       alias :verify_mocks_for_rspec :mocha_verify
@@ -24,3 +24,5 @@ module MultiMock
     end
   end
 end
+
+MultiMock::Adapter.send(:include, ::Mocha::API)

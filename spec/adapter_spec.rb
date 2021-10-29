@@ -26,6 +26,13 @@ describe MultiMock::Adapter do
     it "should clear the stubs created in previous specs" do
       expect { Object.stubbed_method }.to raise_error(NoMethodError)
     end
+
+    it "should allow using mocks" do
+      test_mock = mock
+      test_mock.expects(:hello).returns("Hello Mocha")
+
+      expect(test_mock.hello).to eq "Hello Mocha"
+    end
   end
 
   context "with rr" do
